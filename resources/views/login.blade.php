@@ -70,8 +70,6 @@
 </head>
 
 <body>
-
-
     <div class="content">
         <div class="container">
             <div class="row">
@@ -88,6 +86,11 @@
                                             <h2>Login</h2>
                                         </div>
                                     </div>
+                                    @if (Session::has('fail'))
+                                        <span class="alert alert-danger">
+                                            {{ Session::get('fail') }}
+                                        </span>
+                                    @endif
                                     <form action="{{ route('postlogin') }}" method="post">
                                         @csrf
                                         <label for="">Email Address</label>
