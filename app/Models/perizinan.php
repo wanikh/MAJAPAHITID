@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class perizinan extends Model
 {
-    protected $table='perizinan';
-    protected $fillable=['nama', 'nik', 'tanggallahir', 'tanggalpengajuan', 'jabatan', 'keterangan','atasan','departemen','alasancuti'];
+    protected $table = 'perizinan';
+    protected $fillable =
+    [
+        'nama',
+        'nik',
+        'tanggallahir',
+        'tanggalpengajuan',
+        'jabatan',
+        'keterangan',
+        'atasan',
+        'departemen',
+        'alasancuti'
+    ];
 }
