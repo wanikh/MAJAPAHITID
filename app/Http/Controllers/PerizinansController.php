@@ -18,23 +18,23 @@ class PerizinansController extends Controller
         return view('perizinanuser');
     }
 
-    public function status ($id)
+    public function status($id)
     {
-        $data_items = DB::table('perizinan')->where('id',$id)->first();
+        $data_items = DB::table('perizinan')->where('id', $id)->first();
         $statusnow = $data_items->status;
-        if($statusnow == 1){
-            DB::table('perizinan')->where('id',$id)->update([
-                'status'=>0
+        if ($statusnow == 1) {
+            DB::table('perizinan')->where('id', $id)->update([
+                'status' => 0
             ]);
-        }else{
-            DB::table('perizinan')->where('id',$id)->update([
-                'status'=>1
+        } else {
+            DB::table('perizinan')->where('id', $id)->update([
+                'status' => 1
             ]);
         }
 
         return redirect('viewhalamanperizinanuser');
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -43,14 +43,14 @@ class PerizinansController extends Controller
      */
     public function viewhalamanperizinan()
     {
-        $data_items=perizinan::all();
-        return view ('viewperizinanadmin', compact('data_items'));
+        $data_items = perizinan::all();
+        return view('viewperizinanadmin', compact('data_items'));
     }
 
     public function viewhalamanperizinanuser()
     {
-        $data_items=perizinan::all();
-        return view ('viewperizinanuser', compact('data_items'));
+        $data_items = perizinan::all();
+        return view('viewperizinanuser', compact('data_items'));
     }
 
     /**
@@ -62,7 +62,7 @@ class PerizinansController extends Controller
     public function posthalamanperizinanuser(Request $request)
     {
         $data_items = perizinan::create($request->all());
-        return redirect('perizinanuser')->with('success','Data Berhasil Ditambahkan');
+        return redirect('perizinanuser')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -82,7 +82,7 @@ class PerizinansController extends Controller
         $data_items = perizinan::find($id);
         return view('showperizinanuserpdf', compact('data_items'));
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -108,7 +108,7 @@ class PerizinansController extends Controller
     {
         $data_items = perizinan::find($id);
         $data_items->update($request->all());
-        return redirect()->route('viewhalamanperizinan')->with('update','Data Berhasil Diupdate');
+        return redirect()->route('viewhalamanperizinan')->with('update', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -119,7 +119,7 @@ class PerizinansController extends Controller
      */
     public function destroy($id)
     {
-        perizinan::where('id',$id)->delete();
-        return redirect ('viewhalamanperizinanuser');
+        perizinan::where('id', $id)->delete();
+        return redirect('viewhalamanperizinanuser');
     }
 }
